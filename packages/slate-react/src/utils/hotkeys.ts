@@ -1,4 +1,4 @@
-import { isKeyHotkey } from 'is-hotkey'
+import isHotkey from 'is-hotkey'
 import { IS_APPLE } from './environment'
 
 /**
@@ -52,9 +52,9 @@ const create = (key: string) => {
   const generic = HOTKEYS[key]
   const apple = APPLE_HOTKEYS[key]
   const windows = WINDOWS_HOTKEYS[key]
-  const isGeneric = generic && isKeyHotkey(generic)
-  const isApple = apple && isKeyHotkey(apple)
-  const isWindows = windows && isKeyHotkey(windows)
+  const isGeneric = generic && isHotkey(generic)
+  const isApple = apple && isHotkey(apple)
+  const isWindows = windows && isHotkey(windows)
 
   return (event: KeyboardEvent) => {
     if (isGeneric && isGeneric(event)) return true
